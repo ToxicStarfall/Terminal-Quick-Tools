@@ -1,0 +1,124 @@
+
+Button {
+	border: none /* Removes defult button styling */
+}
+
+
+ToolMenu {
+	border: solid white;
+	width: 20;
+}
+
+ToolMenu Button {
+	# height: 3;
+	# background: grey;
+	border-bottom: heavy grey;
+}
+
+ToolPage {
+	height: 100%;
+	border: solid white;
+	
+}
+
+
+
+# - - - HomeScreen - - - #
+
+HomeScreen #HomePage {
+	# width: 100h;
+	align: center top;
+	padding: 2 8;
+}
+
+HomeScreen #title {
+	text-align: center;
+}
+
+HomeScreen Button {
+	# margin: 1 0;
+}
+
+HomeScreen VerticalGroup {
+	align: center top;
+	margin: 0 4;
+	padding: 0 2;
+	width: 20;
+	border-top: solid white;
+	border-bottom: solid white;
+}
+
+
+# - - - Units Converter - - - #
+
+UnitConverterScreen {
+
+}
+
+# - - - Tools - - - #
+
+Converter Button, Input {
+	border: none;
+}  # Remove borders
+
+#converter-list {
+	margin: 2 8;
+}
+
+Converter {
+	margin: 1 4;
+	padding: 1 4;
+	background: rgba(50, 50, 50, 1);
+	border-top: heavy grey;
+	border-bottom: heavy grey;
+}
+
+Converter Button {
+	height: 1;
+}
+
+Converter Input {
+	width: 20;
+	height: 3;
+	border: heavy grey;
+}
+
+Converter Select {
+	width: 20;
+	height: 3;
+}
+
+#conversion-tool-bar {
+	margin-bottom: 1;
+}
+
+#conversion-type-selector {
+	width: 20;
+	height: 1;
+	offset: 23 0;
+	position: absolute;
+}
+
+#swap-button {
+	# width: 12;
+	margin: 0 2;
+}
+
+#value-output {
+	width: 20;
+	height: 3;
+	text-align: right;
+	border: heavy grey;
+}
+
+#convert-button {
+	height: 3;
+}
+
+
+
+
+.test {
+	border: solid red;
+	background: blue;
+}

@@ -1,0 +1,27 @@
+
+VerticalGrpup {
+	width: 20;
+}
+
+Input {
+	border: solid white;
+	# color: rgba(255, 255, 255, 1);
+}
+
+#GraphInputs {
+	width: 20;
+}
+
+#GraphView {
+	width: 60h;
+	height: 10;
+}
+
+#GraphControls {
+	align: center middle;
+}
+
+#GraphControls Button {
+	width: 16;
+	height: 4;
+}
