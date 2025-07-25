@@ -4,119 +4,70 @@ Button {
 }
 
 
-ToolMenu {
+/* ToolMenu {
 	border: solid white;
 	width: 20;
 }
-
 ToolMenu Button {
 	# height: 3;
 	# background: grey;
 	border-bottom: heavy grey;
 }
-
 ToolPage {
 	height: 100%;
 	border: solid white;
 	
-}
+} */
 
 
 
 # - - - HomeScreen - - - #
 
-HomeScreen #HomePage {
-	# width: 100h;
-	align: center top;
-	padding: 2 8;
+#home-page {
+	width: 100%;
+	content-align: center top;
 }
 
-HomeScreen #title {
+#title {
+	margin: 1 0;
 	text-align: center;
+	# border-bottom: heavy grey;
 }
 
-HomeScreen Button {
-	# margin: 1 0;
+#tool-display {
+	padding: 0 8;
 }
 
-HomeScreen VerticalGroup {
-	align: center top;
+HomeScreen Vertical {
 	margin: 0 4;
-	padding: 0 2;
+}
+HomeScreen VerticalGroup {
 	width: 20;
-	border-top: solid white;
+	border-bottom: heavy white;
+}
+
+.group-button, .group-title {
+	width: 20;
+	# border: solid white;
+	# text-style: bold;
+	text-align: center;
+	border-top: heavy white;
 	border-bottom: solid white;
+	# background: #363636ff;
 }
-
-
-# - - - Units Converter - - - #
-
-UnitConverterScreen {
-
-}
-
-# - - - Tools - - - #
-
-Converter Button, Input {
+.item-container, ListView {
+	height: auto;
+	width: 18;
+	margin: 0 1;
+	# padding: 0 2;
 	border: none;
-}  # Remove borders
-
-#converter-list {
-	margin: 2 8;
+	border-left: heavy grey;
 }
-
-Converter {
-	margin: 1 4;
-	padding: 1 4;
-	background: rgba(50, 50, 50, 1);
-	border-top: heavy grey;
-	border-bottom: heavy grey;
+.item-container Button, ListItem {
 }
-
-Converter Button {
-	height: 1;
+ListItem {
+	# align: center top;
 }
-
-Converter Input {
-	width: 20;
-	height: 3;
-	border: heavy grey;
-}
-
-Converter Select {
-	width: 20;
-	height: 3;
-}
-
-#conversion-tool-bar {
-	margin-bottom: 1;
-}
-
-#conversion-type-selector {
-	width: 20;
-	height: 1;
-	offset: 23 0;
-	position: absolute;
-}
-
-#swap-button {
-	# width: 12;
-	margin: 0 2;
-}
-
-#value-output {
-	width: 20;
-	height: 3;
-	text-align: right;
-	border: heavy grey;
-}
-
-#convert-button {
-	height: 3;
-}
-
-
-
 
 .test {
 	border: solid red;

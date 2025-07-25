@@ -1,0 +1,140 @@
+# - - - Units Converter - - - #
+
+UnitConverterScreen {
+
+}
+
+# - - - Tools - - - #
+
+Converter Button, Input {
+	border: none;
+}  # Remove borders
+
+# converter-list {
+	# margin: 2 8;
+# }
+
+Converter {
+	margin: 1 4;
+	padding: 1 4;
+	background: rgba(50, 50, 50, 1);
+	border-top: heavy grey;
+	border-bottom: heavy grey;
+}
+
+Converter Button {
+	height: 1;
+}
+
+Converter Input, Label {
+	margin: 0; padding: 0;
+	width: 20;
+	height: 1;
+	text-align: right;
+	# border: solid grey;
+}
+
+#conversion-tool-bar {
+	width: 100%;
+	margin-bottom: 1;
+}
+
+#conversion-type-selector {
+	width: 20;
+	height: 1;
+	margin: 0 1;
+	# offset: 21 0;
+	# position: absolute;
+}
+
+# Converter HorizontalGroup HorizontalGroup {
+# 	background: blue;
+# }
+#warning-label {
+	width: 100%;
+	padding: 0 1;
+	text-align: left;
+}
+
+Converter HorizontalGroup {
+	content-align: left top;
+	# border: solid red;
+}
+Converter VerticalGroup {
+	row-span: 2;
+	# width: 20;
+	# height: 4;
+	height: 100%;
+	# border: solid red;
+}
+
+Grid {
+	layout: grid;
+	grid-size: 4 5;   # create a 3x4 grid
+	grid-columns: 20; # column width in characters
+	grid-rows: 1;     # row height in characters
+	# align: center middle;
+	height: 5;
+	# keyline: heavy grey;  # Borders between children
+}
+#value-input, #convert-button, #value-output {
+	row-span: 3;  # Bottom row nodes showld stretch 3 grid rows high
+}
+
+
+#select-input, #select-output {
+	width: 20;
+	height: 3;
+	padding: 0 1;
+	border-left: heavy grey;
+	border-right: heavy grey;
+	background: #1c1c1c;
+}
+#value-output, #value-input {
+	width: 20;
+	height: 3;
+	text-align: right;
+	border: heavy grey;
+	# border-top: dashed grey;
+	# border-bottom: dashed grey;
+	background: #1c1c1c
+}
+
+#swap-button, #convert-button {
+	margin: 0 2;
+	width: 12;
+}
+#swap-button {
+	
+}
+#convert-button {
+	height: 3;
+	# align: center bottom;
+	# content-align: center middle;
+	border-top: dashed grey;
+	border-bottom: dashed grey;
+}
+
+
+#select-input-label, #select-output-label, #value-input-label, #value-output-label {
+	text-align: center;
+	border-left: heavy grey;
+	border-right: heavy grey;
+}
+.converter-label-success {
+
+}
+.converter-label-error {
+
+}
+.value-ouput-blank {
+	# color: ;
+}
+
+#explanation {
+	row-span: 5;
+	margin: 0 2;
+	height: 5;
+	# border: heavy grey;
+	background: #1c1c1c
+}
