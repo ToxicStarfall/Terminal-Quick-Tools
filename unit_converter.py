@@ -20,12 +20,12 @@ import conversions as Convert
 		# self.compact = True
 
 
-
+conversion_type = ""
 class Converter(VerticalGroup):
 	"""  """
 	conversion_types = [
 		("Temperature", "temperature"),
-		("Length(WIP)", "length"),
+		("Length", "length"),
 		("Volumd(WIP)", "volume"),
 	]
 	conversion_options = {
@@ -34,26 +34,22 @@ class Converter(VerticalGroup):
 			("Fahrenheit", "fahrenheit"),
 			("Kelvins", "kelvins"),
 		],
-		"length": [],
+		"length": [
+			("Millimetres", "millimetres"),
+			("Centimetres", "centimetres"),
+			("Metres", "metres"),
+			("Kilometres", "kilometres"),
+			("Inches", "inches"),
+			("Feet", "feet"),
+			("Yards", "yards"),
+			("Miles", "miles"),
+    	],
 		"weight": [],
 		"volume": [],
 	}
-	conversion_functions = {
-		"temperature": {
-			"celsius_fahrenheit": Convert.celsius_to_fahrenheit,
-			"celsius_kelvins": Convert.celsius_to_kelvins,
-			"fahrenheit_celsius": Convert.fahrenheit_to_celsius,
-			"fahrenheit_kelvins": Convert.fahrenheit_to_kelvins,
-			"kelvins_celsius": Convert.kelvins_to_celsius,
-			"kelvins_fahrenheit": Convert.kelvins_to_fahrenheit
-		},
-		"length": {
-			
-		},
-	}
 	conversion_descriptions = {}
  
-	conversion_type = ""
+	# conversion_type = ""
 
 	SelectInput = None
 	SelectOutput = None
@@ -62,6 +58,13 @@ class Converter(VerticalGroup):
 
 	ValueInput = None
 	ValueOutput = None
+
+
+	# Updates the selected conversion type.
+	def set_conversion_type(self):
+		self.query_one("#conversion-type-selector").value = conversion_type
+		self.SelectInput.set_options( self.conversion_options[conversion_type] )
+		self.SelectOutput.set_options( self.conversion_options[conversion_type] )
 
 
 	def swap_types(self) -> None:
@@ -89,16 +92,16 @@ class Converter(VerticalGroup):
 						output_value = Convert.same(input_value)
 						self.ValueOutput.update(str(output_value))
     				# Otherwise, get matching convert function
-					else: 
-						func_name = f"{self.input_type}_{self.output_type}"
-						# Causes erroer, Missing func_name
-						if func_name in self.conversion_functions[self.conversion_type]:		
-							converter_func = self.conversion_functions[self.conversion_type][func_name]
-							output_value = converter_func(input_value)
-							self.ValueOutput.update(str(output_value))
+					else:
+						output_value = Convert.units(
+							self.conversion_type,
+							self.input_type,
+							self.output_type,
+							input_value
+						)
+						self.ValueOutput.update(str(output_value))
+					warning_label.update("Operaton success.")
 
-							warning_label.update("Operaton success.")
-						else: warning_label.update("*Selected units are not available.")
 				else: warning_label.update("*Please insert a value.")
 			else: warning_label.update("*Please select a output type.")
 		else: warning_label.update("*Please select a input type.")
@@ -118,13 +121,12 @@ class Converter(VerticalGroup):
 		# Changes the unit type for input and output selectors.
 		if event.select.id == "conversion-type-selector":
 			self.conversion_type = event.value
-			self.SelectInput.set_options( self.conversion_options[self.conversion_type] )
-			self.SelectOutput.set_options( self.conversion_options[self.conversion_type] )
+			self.set_conversion_type()
 		else:
 			# If no option is selected, set the value to "" for type safety.
 			if event.value == Select.BLANK:
 				event.value = ""
-			# Forward the value as empty.
+			# Forward the value, empty or not.
 			if event.select.id == "select-input":
 				self.input_type = str(event.value)
 			if event.select.id == "select-output":
@@ -145,23 +147,16 @@ class Converter(VerticalGroup):
 			# yield Button("Save Conversion")
 			# yield Button("Clear")
 		with Grid():
-			# yield Label("A", id="select-input-label")
-			# yield Static()
-			# yield Label("B", id="select-output-label")
-
 			yield Static("text", id="explanation")
 
 			yield Select([], prompt="Input type", id="select-input", compact=True)
 			yield Button("swap", id="swap-button")
 			yield Select([], prompt="Output type", id="select-output", compact=True)
 	
-			yield Input(type="number", id="value-input", placeholder="insert value")
+			yield Input(type="number", id="value-input", placeholder="Insert value")
 			yield Button("-> Convert ->", id="convert-button")
-			yield Label("asd", id="value-output")
+			yield Label("Output value", id="value-output")
 
-			# yield Label("C", id="value-input-label")
-			# yield Static()
-			# yield Label("D", id="value-output-label")
 
 	def on_mount(self):
 		""" Initialize variables for DOM access """
@@ -169,6 +164,8 @@ class Converter(VerticalGroup):
 		self.SelectOutput = self.query_one("#select-output")
 		self.ValueInput = self.query_one("#value-input")
 		self.ValueOutput = self.query_one("#value-output")
+		self.set_conversion_type()
+
 
 
 
@@ -190,5 +187,5 @@ class UnitConverterScreen(Screen):
 		yield Header()
 		yield Footer()
 		with Vertical():
-			yield Converter()
+			yield Converter(id="converter")
 		# with VerticalScroll(id="converter-list"):
