@@ -22,12 +22,15 @@ import conversions as Convert
 
 conversion_type = ""
 class Converter(VerticalGroup):
-	"""  """
+	# Options for the conversion type selector.
 	conversion_types = [
 		("Temperature", "temperature"),
 		("Length", "length"),
-		("Volumd(WIP)", "volume"),
+		("Weight & Mass", "weight"),
+		("Volume", "volume"),
+		("Time", "time"),
 	]
+	# Unit options for the selected conversion type.
 	conversion_options = {
 		"temperature": [
 			("Celsius", "celsius"),
@@ -44,8 +47,41 @@ class Converter(VerticalGroup):
 			("Yards", "yards"),
 			("Miles", "miles"),
     	],
-		"weight": [],
-		"volume": [],
+		"mass": [
+			("Ounces", "ounces"),
+			("Pounds", "pounds"),
+			("US Tons", "us_tons"),
+			("Imperial Tons", "imperial_tons"),
+			("Micrograms", "micrograms"),
+			("Milligrams", "milligrams"),
+			("Grams", "grams"),
+			("Kilograms", "kilograms"),
+			("Metric Tons", "metric_tons"),
+    	],
+		"volume": [
+			("Fluid Ounces", "fluid_ounces"),
+			("Cups", "cups"),
+			("Pints", "pints"),
+			("Quarts", "quarts"),
+			("Gallons", "gallons"),
+			("Millileters", "millileters"),
+			("Liters", "liters"),
+		],
+		"time": [
+			("Nanoseconds", "nanoseconds"),
+			("Microseconds", "microseconds"),
+			("Milliseconds", "milliseconds"),
+			("Seconds", "seconds"),
+			("Minutes", "minutes"),
+			("Hours", "hours"),
+			("Days", "days"),
+			("Weeks", "weeks"),
+			("Months", "months"),
+			("Years", "years"),
+			# ("Decades", "secades"),
+			# ("Centuries", "centuries"),
+			# ("Millennium", "millennium"),
+		],
 	}
 	conversion_descriptions = {}
  
@@ -67,8 +103,8 @@ class Converter(VerticalGroup):
 		self.SelectOutput.set_options( self.conversion_options[conversion_type] )
 
 
+	# Swaps selected input and output types.
 	def swap_types(self) -> None:
-		""" Swaps selected input and output types. """
 		# Changing Select()'s value automatically updates selection.
 		a = self.SelectInput.value
 		b = self.SelectOutput.value
@@ -94,7 +130,7 @@ class Converter(VerticalGroup):
     				# Otherwise, get matching convert function
 					else:
 						output_value = Convert.units(
-							self.conversion_type,
+							conversion_type,
 							self.input_type,
 							self.output_type,
 							input_value
@@ -116,12 +152,14 @@ class Converter(VerticalGroup):
 		if event.button.id == "convert-button":
 			self.convert_input()
 
+	# Gets values of selectors and stores them.
 	def on_select_changed(self, event: Select.Changed) -> None:
-		""" Gets values of selectors and stores them.  """
-		# Changes the unit type for input and output selectors.
 		if event.select.id == "conversion-type-selector":
-			self.conversion_type = event.value
+			global conversion_type # Identifies it as global in order to assign value.
+			conversion_type = event.value
 			self.set_conversion_type()
+
+		# Changes the unit type for input and output selectors.
 		else:
 			# If no option is selected, set the value to "" for type safety.
 			if event.value == Select.BLANK:

@@ -59,8 +59,9 @@ class HomeScreen(Screen): #Horizontal):
 						with VerticalGroup(classes="group-tool-list"):
 							yield Button("Temperature", id="temperature", classes="conversion-option")
 							yield Button("Length", id="length", classes="conversion-option")
-							yield Button("Weight(WIP)", classes="conversion-option")
-							yield Button("Volume(WIP)", classes="conversion-option")
+							yield Button("Weight & Mass", id="mass", classes="conversion-option")
+							yield Button("Volume", id="volume", classes="conversion-option")
+							yield Button("Time", id="time", classes="conversion-option")
 						# with ListView():
 						# 	with ListItem(): yield Label("ASD", id="ASD")
 						# 	yield ListItem(Label("Aad"))
@@ -84,8 +85,8 @@ class HomeScreen(Screen): #Horizontal):
 							# yield Button("Regex")
 				with Vertical():
 				# yield Vertical()
-					with VerticalGroup(id="timezone-columnm", classes="group-container"):
-						yield Static("Timezones(WIP)", classes="group-title")
+					with VerticalGroup(id="miscellaneous-columnm", classes="group-container"):
+						yield Static("Miscellaneous(WIP)", classes="group-title")
 						with VerticalGroup(classes="group-tool-list"):
 							yield Button("Timezones")
 
