@@ -27,35 +27,41 @@ ToolPage {
 	width: 100%;
 	content-align: center top;
 }
-
+# Home screen banner title.
 #title {
 	margin: 1 0;
 	text-align: center;
 	# border-bottom: heavy grey;
 }
 
+# Main tools display container.
 #tool-display {
 	padding: 0 8;
 }
 
+# Tool display columns
 HomeScreen Vertical {
 	margin: 0 4;
 }
-HomeScreen VerticalGroup {
+
+# Tool groups within columns
+.group-container {
 	width: 20;
+	margin-bottom: 1;
 	border-bottom: heavy white;
 }
 
-.group-button, .group-title {
+# A [Tool Group's] title.
+.group-title {
 	width: 20;
-	# border: solid white;
-	# text-style: bold;
 	text-align: center;
 	border-top: heavy white;
 	border-bottom: solid white;
 	# background: #363636ff;
 }
-.item-container, ListView {
+
+# Container for tools in a [Tool Group]
+.group-tool-list {# , ListView {
 	height: auto;
 	width: 18;
 	margin: 0 1;
@@ -63,11 +69,22 @@ HomeScreen VerticalGroup {
 	border: none;
 	border-left: heavy grey;
 }
-.item-container Button, ListItem {
+
+# Tool group's contents
+.group-tool-list Button {
+	# width: 100%;
+	align: left top;
+	text-align: left;
+} # , ListItem {}
+.conversion-option {
+	# text-align: left;
 }
-ListItem {
-	# align: center top;
-}
+
+
+#unit-conversion-column {}
+
+
+
 
 .test {
 	border: solid red;

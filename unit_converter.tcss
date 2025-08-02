@@ -43,30 +43,13 @@ Converter Input, Label {
 	width: 20;
 	height: 1;
 	margin: 0 1;
-	# offset: 21 0;
-	# position: absolute;
 }
-
-# Converter HorizontalGroup HorizontalGroup {
-# 	background: blue;
-# }
 #warning-label {
 	width: 100%;
 	padding: 0 1;
 	text-align: left;
 }
 
-Converter HorizontalGroup {
-	content-align: left top;
-	# border: solid red;
-}
-Converter VerticalGroup {
-	row-span: 2;
-	# width: 20;
-	# height: 4;
-	height: 100%;
-	# border: solid red;
-}
 
 Grid {
 	layout: grid;
@@ -93,10 +76,9 @@ Grid {
 #value-output, #value-input {
 	width: 20;
 	height: 3;
-	text-align: right;
+	padding: 0 1;
+	text-align: left;
 	border: heavy grey;
-	# border-top: dashed grey;
-	# border-bottom: dashed grey;
 	background: #1c1c1c
 }
 
@@ -104,9 +86,7 @@ Grid {
 	margin: 0 2;
 	width: 12;
 }
-#swap-button {
-	
-}
+#swap-button {}
 #convert-button {
 	height: 3;
 	# align: center bottom;

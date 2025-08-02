@@ -8,10 +8,10 @@ from textual.containers import Horizontal, HorizontalGroup, HorizontalScroll
 from textual.containers import Vertical, VerticalGroup, VerticalScroll
 # from textual.widget import Widget  # Used for custom container with tcss 
 from textual.widgets import Header, Footer, Static
-from textual.widgets import Label, Button, Input, OptionList, ListView, ListItem
-from textual.widgets.option_list import Option
-from textual.widgets import Collapsible, ContentSwitcher
+from textual.widgets import Label, Button, Input, ListView, ListItem
+from textual.widgets import ContentSwitcher
 
+import unit_converter
 from unit_converter import UnitConverterScreen
 
 from art import text2art
@@ -34,12 +34,11 @@ class ToolPage(ContentSwitcher):
 
 class HomeScreen(Screen): #Horizontal):
 	"""  """
+
 	def on_button_pressed(self, event: Button.Pressed) -> None:
-		"""  """
-		# if event.button.id == "temp-button":
-		# 	self.app.push_screen("unit_converter")
 		button = event.button
 		if "conversion-option" in button.classes:
+			unit_converter.conversion_type = button.id
 			self.app.push_screen("unit_converter")
    
 	# def on_enter(self, event: Events.Enter) -> None:
@@ -55,43 +54,46 @@ class HomeScreen(Screen): #Horizontal):
 
 			with HorizontalGroup(id="tool-display"):
 				with Vertical():
-					with VerticalGroup(id="unit-column"):
-						# yield Label("Temperature", id="temperature", classes="group-title")
-						# yield Button("Temperature", id="temp-button", classes="group-button", disabled=True)
-						yield Static("Temperature", classes="group-title")
-						with VerticalGroup(classes="item-container"):
-							yield Button("Conversions", classes="conversion-option")
-							# yield Button("Option 2")
-						# yield OptionList(
-						# 	Option("Conversions", id="a"),
-						# 	Option("B", id="b"),
-						# 	id="unit-items", classes="item-container", compact=True
-						# 	# ,highlighted=None
-    					# )
+					with VerticalGroup(id="unit-conversion-column", classes="group-container"):
+						yield Static("Unit Conversions", classes="group-title")
+						with VerticalGroup(classes="group-tool-list"):
+							yield Button("Temperature", id="temperature", classes="conversion-option")
+							yield Button("Length", id="length", classes="conversion-option")
+							yield Button("Weight & Mass", id="mass", classes="conversion-option")
+							yield Button("Volume", id="volume", classes="conversion-option")
+							yield Button("Time", id="time", classes="conversion-option")
 						# with ListView():
 						# 	with ListItem(): yield Label("ASD", id="ASD")
 						# 	yield ListItem(Label("Aad"))
 						# )
 				
 				with Vertical():
-					with VerticalGroup(id="length-column"):
-						yield Button("Length(WIP)")
-					with VerticalGroup(id="weight-column"):
-						yield Button("Weight(WIP)")
-					with VerticalGroup(id="volume-column"):
-						yield Button("Volume(WIP)")
+					with VerticalGroup(id="color-column", classes="group-container"):
+						yield Static("Colors(WIP)", classes="group-title")
+						with VerticalGroup(classes="group-tool-list"):
+							yield Button("Color Tool 1")
+							yield Button("Color Tool 2")
 
 				with Vertical():
-					with VerticalGroup(id="text-column"):
-						yield Button("Text stuff(WIP)")
-					with VerticalGroup(id="color-column"):
-						yield Button("Colors(WIP)")
-
+				# yield Vertical()
+					with VerticalGroup(id="text-column", classes="group-container"):
+						yield Static("Text Tools(WIP)", classes="group-title")
+						with VerticalGroup(classes="group-tool-list"):
+							yield Button("Text stuff")
+							yield Button("Find Text")
+							yield Button("Replace Text")
+							# yield Button("Regex")
 				with Vertical():
-					with VerticalGroup(id="timezone-column"):
-						yield Button("Timezones(WIP)")
-					with VerticalGroup(id="currency-column"):
-						yield Button("Currencies(WIP)")
+				# yield Vertical()
+					with VerticalGroup(id="miscellaneous-columnm", classes="group-container"):
+						yield Static("Miscellaneous(WIP)", classes="group-title")
+						with VerticalGroup(classes="group-tool-list"):
+							yield Button("Timezones")
+
+					with VerticalGroup(id="currency-column", classes="group-container"):
+						yield Static("Currencies(WIP)", classes="group-title")
+						with VerticalGroup(classes="group-tool-list"):
+							yield Button("Currencies tool")
 
 
 
