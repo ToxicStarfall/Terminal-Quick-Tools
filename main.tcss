@@ -76,7 +76,13 @@ HomeScreen Vertical {
 	align: left top;
 	text-align: left;
 } # , ListItem {}
+
 .conversion-option {
+	width: 100%;
+	text-align: left;
+}
+.text-tool-option {
+	# width: 100%;
 	# text-align: left;
 }
 
