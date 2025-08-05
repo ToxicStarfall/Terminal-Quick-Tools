@@ -4,11 +4,27 @@
 
 Quick Tools in Terminal provides various tools to help boost your productivity, especially while offline.
 
-Tools Included:
-- Unit conversions: Temperature, Length, Mass/Weight, Volume, & Time
+## Features
+### Unit Conversions
+- Included units: Temperature, Length, Mass/Weight, Volume, & Time
+- WIP features: Saving conversions
+<img width="1103" height="638" alt="quicktools-unitconverter" src="https://github.com/user-attachments/assets/aca3b233-955d-43fb-836b-37aa1cba7cdd" />
 
-Planned Tools:
+### Color Tools (WIP)
+- Color conversion between Hex, RGB, & HSV
+
+PLANNED:
+- Color Picking tools
+- Color Gradient/Shades
+
+### Text Tools (WIP)
+- Conversion between Binary, Decimal, Hexidecimal(Hex), & Ascii
+
+PLANNED:
+- Find and Replace text
+<img width="1103" height="638" alt="quicktools-texttools" src="https://github.com/user-attachments/assets/309a1bb2-d380-4dd5-901e-e48cb0edd106" />
+
+Miscellaneous Planned Tools:
 - More unit conversions types
-- Color and Text manipulation
 - Currency
 - Timezones
