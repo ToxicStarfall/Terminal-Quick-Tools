@@ -13,7 +13,8 @@
 
 }
 #text-tool-selector {
-	border: none;
+	height: 3;
+	border: solid grey;
 }
 
 

@@ -11,8 +11,25 @@ import conversions as Convert
 
 
 class BinAsciiTools(Vertical):
+	# conversion_options = [
+	# 	("Binary to Decimal", "bin_to_dec"),
+	# 	("Binary to Ascii", "bin_to_asc"),
+	# 	("Binary to Hexidecimal","bin_to_hex"),
+	# 	("Decimal to Binary", ""),
+	# 	# ("Decimal to ", ""),
+	# 	# ("Decimal to ", ""),
+	# 	("Ascii to Binary", ""),
+	# 	("Ascii to Decimal", ""),
+	# 	("Ascii to Hexidecimal", ""),
+	# 	("Hexidecimal to ","b"),
+	# 	# ("Hexidecimal to ","b"),
+	# 	# ("Hexidecimal to ","b"),
+	# ]
 	conversion_options = [
-		("Binary to Decimal","bin_to_dec"), ("Binary to Ascii","bin_to_asc"),
+		("Binary", "bin"),
+		("Decimal", "dec"),
+		("Hex (hexidecimal)","hex"),
+		("Ascii", "ascii"),
 	]
 	InputTextArea = None
 	OutputTextArea = None
@@ -41,7 +58,11 @@ class BinAsciiTools(Vertical):
 	def compose(self):
 		with HorizontalGroup(classes="h-group"):
 			yield Label("INPUT")
-			yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-conversion-selector", compact=True)
+			# yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-conversion-selector", compact=True)
+			yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-input-selector", compact=True)
+			yield Label("to")
+			yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-output-selector", compact=True)
+		
 		yield TextArea(name="asdpo", id="input-text-area",
 				show_line_numbers=True)
 		with HorizontalGroup(classes="h-group"):
@@ -77,7 +98,11 @@ class TextToolsScreen(Screen):
 	CSS_PATH = "text_tools.tcss"
 	BINDINGS = []
 
-	tool_options = []
+	tool_options = [
+		("Binary <--> Ascii Converter", "bin-ascii-tool"),
+		("Find Text", "find-replace-tool"),
+		("Replace Text", "find-replace-tool"),
+	]
 	tool_mode = ""
 
 	def on_button_pressed(self, event: Button.Pressed):
@@ -88,7 +113,7 @@ class TextToolsScreen(Screen):
 		yield Footer()
 		with VerticalScroll(id="text-tool-content-container"):
 			with HorizontalGroup(id="tool-select-bar"):
-				yield Select([], prompt="Select a tool", id="text-tool-selector")
+				yield Select(self.tool_options, prompt="Select a tool", id="text-tool-selector", compact=True)
 
 			yield BinAsciiTools(id="bin-ascii-tools")
 		# 	with Vertical(id="bin-ascii-tools"):
