@@ -87,9 +87,6 @@ HomeScreen Vertical {
 }
 
 
-#unit-conversion-column {}
-
-
 
 
 .test {

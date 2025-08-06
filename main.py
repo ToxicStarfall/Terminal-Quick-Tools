@@ -19,16 +19,6 @@ from art import text2art
 
 
 
-# class ToolMenu(VerticalScroll):
-# 	""" A sidebar popup with a list of tools """
-# 	def compose(self) -> ComposeResult:
-# 		# with Collapsible():
-# 			yield Button("Binary/Text", id="a")
-# 			yield Button("B", id="b")
-# 			yield Button("Graph", id="c")
-
-
-
 class HomeScreen(Screen):
 	# BINDINGS = [
 	# 	("q", "focus_left", "Focus Left"),
@@ -45,9 +35,6 @@ class HomeScreen(Screen):
 		if "color-tool-option" in button.classes:
 			self.app.push_screen("color_tools")
    
-	# def on_enter(self, event: Events.Enter) -> None:
-	# 	if evnet.node is Button:
-	# 		"""  """
 
 	def compose(self) -> ComposeResult:
 		yield Footer()
@@ -128,16 +115,13 @@ class QuickTools(App):
 				
 	def on_button_pressed(self, event: Button.Pressed) -> None:
 		"""  """
-		# toolpage = self.query_one("ToolPage")
-		# if event.button.id == "a":
-		# 	toolpage.current = "BinaryTool"
-		# else:
-		# 	toolpage.current = event.button.id
 
 	def on_mount(self):
 		# self.install_screen(UnitConverterScreen(), name="unit_converter")
 		self.push_screen("home_screen")
 		# self.push_screen("unit_converter")
+		# self.push_screen("color_tools")
+		# self.push_screen("text_tools")
 
 
 
@@ -147,5 +131,6 @@ if __name__ == "__main__":
 
 """ 
 cd Downloads/Terminal-graphing-app
+pyinstaller options name.spec   # builds using .spec's info 
 pyinstaller --add-data conversions.py:. --add-data unit_converter.py:. --add-data main.tcss:. --add-data unit_converter.tcss:. main.py
 """
