@@ -24,9 +24,10 @@ Quick Tools in Terminal provides various tools to help boost your productivity, 
 
 #### Planned:
 - Find and Replace text
-<img width="1103" height="638" alt="quicktools-texttools" src="https://github.com/user-attachments/assets/309a1bb2-d380-4dd5-901e-e48cb0edd106" />
+<img width="1102" height="638" alt="quicktools-texttools-asciibin" src="https://github.com/user-attachments/assets/4e8bee0b-c2ed-436b-9e06-f1700d5d4672" />
 
-Miscellaneous Planned Tools:
+
+### Miscellaneous Planned Tools:
 - More unit conversions types
 - Currency
 - Timezones
