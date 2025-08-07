@@ -10,17 +10,19 @@ Quick Tools in Terminal provides various tools to help boost your productivity, 
 - WIP features: Saving conversions
 <img width="1103" height="638" alt="quicktools-unitconverter" src="https://github.com/user-attachments/assets/aca3b233-955d-43fb-836b-37aa1cba7cdd" />
 
-### Color Tools (WIP)
+### Color Tools
 - Color conversion between Hex, RGB, & HSV
 
-PLANNED:
+#### Planned:
 - Color Picking tools
 - Color Gradient/Shades
+<img width="1102" height="638" alt="quicktools-colortools" src="https://github.com/user-attachments/assets/f3cc6370-46d4-41b2-9f55-d645db32d70d" />
 
 ### Text Tools (WIP)
-- Conversion between Binary, Decimal, Hexidecimal(Hex), & Ascii
+- Currently Ascii to Decimal is supported
+- WIP Conversion between Binary & Hexidecimal(Hex) to Decimal & Ascii
 
-PLANNED:
+#### Planned:
 - Find and Replace text
 <img width="1103" height="638" alt="quicktools-texttools" src="https://github.com/user-attachments/assets/309a1bb2-d380-4dd5-901e-e48cb0edd106" />
 
