@@ -1,0 +1,46 @@
+
+#text-tool-content-container {
+	margin: 1 4;
+	# padding: 1 4;
+	# background: rgba(50, 50, 50, 1);
+}
+
+
+#tool-select-bar {
+	margin-bottom: 1;
+	border-left: heavy grey;
+	border-right: heavy grey;
+
+}
+#text-tool-selector {
+	height: 3;
+	border: solid grey;
+}
+
+
+.h-group {
+	height: 3;
+}
+.h-group Label {
+	width: 28;
+	height: 3;
+	padding-top: 2;
+	padding-right: 8;
+	text-align: center;
+}
+.h-group Button {
+	height: 3;
+	border: solid grey;
+}
+.h-group Select {
+	height: 3;
+	border: solid grey;
+}
+.h-group Label, Button, Select {
+	margin: 0 1;
+}
+
+
+TextArea {
+	border: heavy grey;
+}

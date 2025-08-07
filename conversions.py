@@ -77,9 +77,9 @@ ConversionMultipliers = {
 	},
 	"time": {
 		"base": "seconds",
-		"nanoseconds": 1000000000,
-		"microseconds": 1000000,
-		"milliseconds": 1000,
+		"nanoseconds": 1000000000, # 1e+9
+		"microseconds": 1000000, # 1e+6
+		"milliseconds": 1000, # 1e+3
 		"seconds": 1,
 		"minutes": 1/60,
 		"hours": 1/3600,
@@ -87,8 +87,46 @@ ConversionMultipliers = {
 		"weeks": 1/604800,
 		"months": 1/2629746,
 		"years": 1/31536000,
-		# "decades": 0,
-		# "centuries": 0,
-		# "millennium": 0,
+		"decades": 1/(31536000 * 10),
+		"centuries": 1/(31536000 * 100),
+		"millennium": 1/(31536000 * 1000),
 	},
 }
+
+
+
+def binary_to_decimal(binary_str: str):
+	multiplier = len(binary_str) - 1
+	value = 0
+	for digit in binary_str:
+		value += int(digit) * (2**multiplier)
+		multiplier -= 1
+	
+	output = str(value)
+	return output
+
+
+def dec_to_bin():
+	pass
+
+
+def dec_to_hex(decimal):
+	decimal = int(decimal)
+	quotient = decimal / 16
+	remainder = decimal % 16
+	value += remainder
+	pass
+
+
+def ascii_to_decimal(string: str):
+	result = ""
+	for char in string:
+		result += f"{ord(char)} "
+	return result
+
+
+def decimal_to_ascii(string: str):
+	result = ""
+	for decimal in string.split(" "):
+		result += f"{chr(decimal)}"
+	return result

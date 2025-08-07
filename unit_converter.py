@@ -1,10 +1,8 @@
-# from textual import log
 from textual.screen import Screen
 from textual.containers import Horizontal, HorizontalGroup, Grid
 from textual.containers import Vertical, VerticalGroup, VerticalScroll
 from textual.widgets import Header, Footer, Static
 from textual.widgets import Button, Input, Label, Select
-# from textual.widgets import 
 # from main import ToolMenu  # Causes cicular import error
 import conversions as Convert
 
@@ -78,9 +76,9 @@ class Converter(VerticalGroup):
 			("Weeks", "weeks"),
 			("Months", "months"),
 			("Years", "years"),
-			# ("Decades", "secades"),
-			# ("Centuries", "centuries"),
-			# ("Millennium", "millennium"),
+			("Decades", "decades"),
+			("Centuries", "centuries"),
+			("Millennium", "millennium"),
 		],
 	}
 	conversion_descriptions = {}
