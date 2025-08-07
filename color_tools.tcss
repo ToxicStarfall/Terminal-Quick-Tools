@@ -27,8 +27,11 @@ ColorCodeGroup {
 
 }
 
+ColorDisplayTools {
+	width: 6;
+}
 ColorDisplayTools Button {
-	width: auto;
+	width: 6;
 	height: 2;
 	border-bottom: solid grey;
 }

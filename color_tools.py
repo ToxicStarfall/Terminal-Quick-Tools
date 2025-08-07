@@ -133,19 +133,20 @@ class ColorCodeGroup(VerticalGroup):
 
 
 #
-class ColorDisplayTools(VerticalGroup):
+class ColorDisplayTools(HorizontalGroup):
 	def compose(self):
 		# with Horizontal():
 			# yield Button("Clear")
 			# yield Button("Lock")
 			# yield Button("Edit")
 		with HorizontalGroup():
-			yield Button("<--")
-			yield Label("Index")
-			yield Button("-->")
+			# yield Button("<--")
+			# yield Button("A")
+			# yield Label("Index")
+			# yield Button("-->")
 
 
-
+#
 class ColorDisplayGroup(Vertical):
 	ColorDisplay = None
 	ColorCodeGroup = None
@@ -161,7 +162,6 @@ class ColorDisplayGroup(Vertical):
 			if not re.match(r"#", Input.value): Input.value = "#" + Input.value
 			# Stop a invalid hex (incorrect length)
 			if not re.fullmatch(r"^.{4,5}|.{7}$", Input.value): # +1 for "#"
-			# len = len(Input.value)
 				# Input.error()
 				self.app.bell() # Error sound
 			else:
@@ -180,14 +180,43 @@ class ColorDisplayGroup(Vertical):
 	def compose(self):
 		yield ColorDisplay()
 		yield ColorCodeGroup()
-		# yield ColorDisplayTools()
+		yield ColorDisplayTools()
 
 	def on_mount(self):
 		self.ColorDisplay = self.query_one("ColorDisplay")
 		self.ColorCodeGroup = self.query_one("ColorCodeGroup")
 
 
+#
 class ColorTools(HorizontalScroll):
+	BINDINGS = [
+		("a", "add_color_display", "Add Color Tool"),
+		("alt+left", "focus_left", "Focus Left"),
+		("alt+right", "focus_right", "Focus Right"),
+	]
+
+	focused_tool_idx = 0
+
+	def action_focus_left(self):
+		siblings = self.query("ColorDisplayGroup")
+		self.focused_tool_idx -= 1
+		if self.focused_tool_idx == -1:
+			self.focused_tool_idx = len(siblings) - 1
+		self.screen.set_focus( siblings[self.focused_tool_idx].query_one("Input") )
+
+	def action_focus_right(self):
+		siblings = self.query("ColorDisplayGroup")
+		self.focused_tool_idx += 1
+		if self.focused_tool_idx == len(siblings):
+			self.focused_tool_idx = 0
+		self.screen.set_focus( siblings[self.focused_tool_idx].query_one("Input") )
+		
+	def action_add_color_display(self):
+		a = ColorDisplayGroup()
+		self.query_one("ColorTools").mount(a)
+		a.scroll_visible()
+
+
 	def compose(self):
 			yield ColorDisplayGroup()
 			yield ColorDisplayGroup()
@@ -202,7 +231,9 @@ class ColorTools(HorizontalScroll):
 
 class ColorToolsScreen(Screen):
 	CSS_PATH = "color_tools.tcss"
-	BINDINGS = []
+	BINDINGS = [
+		# ("a", "add_color_display", "Add Color Tool")
+	]
 
 	def compose(self):
 		yield Header()
@@ -217,4 +248,6 @@ class ColorToolsScreen(Screen):
 				# with HorizontalGroup():
 					# yield Select([], prompt="", id="", compact=True)
 
+	def on_mount(self):
+		self.screen.set_focus( self.query_one("#color-tools-content-container") )
 

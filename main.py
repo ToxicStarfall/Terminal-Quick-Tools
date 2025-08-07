@@ -1,11 +1,12 @@
 # import math
 
 from textual.app import App, ComposeResult
+from textual.binding import Binding
 from textual.screen import Screen
 # from textual.containers import Container
-from textual.containers import Horizontal, HorizontalGroup, HorizontalScroll
+from textual.containers import Horizontal, HorizontalGroup, HorizontalScroll, Center
 from textual.containers import Vertical, VerticalGroup, VerticalScroll
-# from textual.widget import Widget  # Used for custom container with tcss 
+from textual.widget import Widget  # Used for custom container with tcss 
 from textual.widgets import Header, Footer, Static
 from textual.widgets import Label, Button, Input#, ListView, ListItem
 #from textual.widgets import ContentSwitcher
@@ -20,19 +21,36 @@ from art import text2art
 
 
 class HomeScreen(Screen):
-	# BINDINGS = [
-	# 	("q", "focus_left", "Focus Left"),
-	# 	("e", "focus_right", "Focus Right"),
-	# ]
+	BINDINGS = [
+		("left", "focus_left", "Focus Left"),
+		("right", "focus_right", "Focus Right"),
+	]	
+
+	focused_tool_group = 0
+	
+	def action_focus_left(self):
+		siblings = self.query(".group-container")
+		self.focused_tool_group -= 1
+		if self.focused_tool_group == -1:
+			self.focused_tool_group = len(siblings) - 1
+		self.screen.set_focus( siblings[self.focused_tool_group].query_one("Button") )
+
+	def action_focus_right(self):
+		siblings = self.query(".group-container")
+		self.focused_tool_group += 1
+		if self.focused_tool_group == len(siblings):
+			self.focused_tool_group = 0
+		self.screen.set_focus( siblings[self.focused_tool_group].query_one("Button") )
+		
 
 	def on_button_pressed(self, event: Button.Pressed) -> None:
 		button = event.button
 		if "conversion-option" in button.classes:
 			unit_converter.conversion_type = button.id
 			self.app.push_screen("unit_converter")
-		if "text-tool-option" in button.classes:
+		elif "text-tool-option" in button.classes:
 			self.app.push_screen("text_tools")
-		if "color-tool-option" in button.classes:
+		elif "color-tool-option" in button.classes:
 			self.app.push_screen("color_tools")
    
 
@@ -41,6 +59,9 @@ class HomeScreen(Screen):
 
 		with VerticalScroll(id="home-page"):
 			yield Static(text2art("Quick Tools", space=1), id="title")
+			yield Center(
+				Label("'left arrow'/'right arrow' to focus left/right")
+			)
 
 			with HorizontalGroup(id="tool-display"):
 				with Vertical():
@@ -59,24 +80,24 @@ class HomeScreen(Screen):
 				
 				with Vertical():
 					with VerticalGroup(id="color-column", classes="group-container"):
-						yield Static("Colors(WIP)", classes="group-title")
+						yield Static("Colors", classes="group-title")
 						with VerticalGroup(classes="group-tool-list"):
 							yield Button("RGB, HSV, Hex", classes="color-tool-option")
-							yield Button("Color Codes", classes="color-tool-option")
-							yield Button("Color Tool 2", classes="color-tool-option")
+							yield Button("Color Tool(WIP)", classes="color-tool-option")
 
 				with Vertical():
 					with VerticalGroup(id="text-column", classes="group-container"):
 						yield Static("Text Tools(WIP)", classes="group-title")
 						with VerticalGroup(classes="group-tool-list"):
 							yield Button("Binary Converter", classes="text-tool-option")
+							yield Button("Bin, Dec, Ascii", classes="text-tool-option")
 							yield Button("Find Text", classes="text-tool-option")
 							yield Button("Replace Text", classes="text-tool-option")
 							# yield Button("Regex")
 				
 				with Vertical():
 					with VerticalGroup(id="miscellaneous-columnm", classes="group-container"):
-						yield Static("Miscellaneous(WIP)", classes="group-title")
+						yield Static("Miscellaneous(TBD)", classes="group-title")
 						with VerticalGroup(classes="group-tool-list"):
 							yield Button("Timezones")
 							yield Button("Currencies tool")
@@ -86,13 +107,18 @@ class HomeScreen(Screen):
 					# 	with VerticalGroup(classes="group-tool-list"):
 
 
+	# def on_mount(self):
+	# 	focused_tool_group = self.query_one(".group-container") # set to first tool group contaienr
+
+
 
 class QuickTools(App):
 	""" a """
 	
 	CSS_PATH = "main.tcss"
 	BINDINGS = [
-		("a", "open_home_screen", "Home"),
+		("`", "open_home_screen", "Home"),
+		# Binding("esc", "open_home_screen", "Home", priority=True, tooltip="adsad")
 	]
 	# ENABLE_COMMAND_PALETTE = False
 	SCREENS = {
@@ -131,6 +157,6 @@ if __name__ == "__main__":
 
 """ 
 cd Downloads/Terminal-graphing-app
-pyinstaller options name.spec   # builds using .spec's info 
+pyinstaller main.spec   # builds using .spec's info 
 pyinstaller --add-data conversions.py:. --add-data unit_converter.py:. --add-data main.tcss:. --add-data unit_converter.tcss:. main.py
 """
