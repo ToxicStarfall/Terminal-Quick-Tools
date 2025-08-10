@@ -213,7 +213,8 @@ class ColorTools(HorizontalScroll):
 		
 	def action_add_color_display(self):
 		a = ColorDisplayGroup()
-		self.query_one("ColorTools").mount(a)
+		# self.query_one("Color").mount(a)
+		self.mount(a)
 		a.scroll_visible()
 
 

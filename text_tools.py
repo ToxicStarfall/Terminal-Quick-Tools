@@ -58,10 +58,11 @@ class BinAsciiTools(Vertical):
 	def compose(self):
 		with HorizontalGroup(classes="h-group"):
 			yield Label("INPUT")
-			# yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-conversion-selector", compact=True)
-			yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-input-selector", compact=True)
+			# yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-input-selector", compact=True)
+			yield Select(self.conversion_options, prompt="ASCII ONLY", id="bin-ascii-input-selector", compact=True)
 			yield Label("to")
-			yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-output-selector", compact=True)
+			# yield Select(self.conversion_options, prompt="Select conversion", id="bin-ascii-output-selector", compact=True)
+			yield Select(self.conversion_options, prompt="Decimal ONLY", id="bin-ascii-output-selector", compact=True)
 		
 		yield TextArea(name="asdpo", id="input-text-area",
 				show_line_numbers=True)

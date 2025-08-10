@@ -1,7 +1,7 @@
 
-Button {
-	border: none /* Removes defult button styling */
-}
+# Button {
+# 	border: none /* Removes defult button styling */
+# }
 
 
 /* ToolMenu {
@@ -37,6 +37,9 @@ ToolPage {
 # Main tools display container.
 #tool-display {
 	padding: 0 8;
+}
+#tool-display Button {
+	border: none;
 }
 
 # Tool display columns

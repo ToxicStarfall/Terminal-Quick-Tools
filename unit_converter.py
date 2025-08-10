@@ -24,7 +24,7 @@ class Converter(VerticalGroup):
 	conversion_types = [
 		("Temperature", "temperature"),
 		("Length", "length"),
-		("Weight & Mass", "weight"),
+		("Weight & Mass", "mass"),
 		("Volume", "volume"),
 		("Time", "time"),
 	]

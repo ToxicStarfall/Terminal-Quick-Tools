@@ -59,11 +59,11 @@ HexGroup, RGBGroup, HSVGroup {
 	border: solid grey;
 	border-bottom: none;
 
-	Input {
-		width: 4;
-		margin-right: 1;
-		background: #282828ff;
-	}
+	# Input {
+	# 	width: 4;
+	# 	margin-right: 1;
+	# 	background: #282828ff;
+	# }
 
 	Input:hover {
 		background: #343434ff;
