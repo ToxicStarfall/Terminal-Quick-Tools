@@ -19,11 +19,7 @@ ColorDisplay {
 	margin: 0 2;
 	border: heavy grey;
 	# border: tall grey;
-<<<<<<< Updated upstream
-	border: thick grey;
-=======
 	# border: thick grey;
->>>>>>> Stashed changes
 }
 
 # VerticalGroup of different Color code displays.

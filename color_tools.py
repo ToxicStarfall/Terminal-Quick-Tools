@@ -141,11 +141,7 @@ class ColorDisplayTools(HorizontalGroup):
 			# yield Button("Edit")
 		with HorizontalGroup():
 			# yield Button("<--")
-<<<<<<< Updated upstream
-			# yield Button("A")
-=======
 			yield Button("A")
->>>>>>> Stashed changes
 			# yield Label("Index")
 			# yield Button("-->")
 
@@ -184,11 +180,7 @@ class ColorDisplayGroup(Vertical):
 	def compose(self):
 		yield ColorDisplay()
 		yield ColorCodeGroup()
-<<<<<<< Updated upstream
-		yield ColorDisplayTools()
-=======
 		# yield ColorDisplayTools()
->>>>>>> Stashed changes
 
 	def on_mount(self):
 		self.ColorDisplay = self.query_one("ColorDisplay")
