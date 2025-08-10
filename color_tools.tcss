@@ -19,7 +19,7 @@ ColorDisplay {
 	margin: 0 2;
 	border: heavy grey;
 	# border: tall grey;
-	border: thick grey;
+	# border: thick grey;
 }
 
 # VerticalGroup of different Color code displays.
@@ -59,11 +59,11 @@ HexGroup, RGBGroup, HSVGroup {
 	border: solid grey;
 	border-bottom: none;
 
-	Input {
-		width: 4;
-		margin-right: 1;
-		background: #282828ff;
-	}
+	# Input {
+	# 	width: 4;
+	# 	margin-right: 1;
+	# 	background: #282828ff;
+	# }
 
 	Input:hover {
 		background: #343434ff;

@@ -141,7 +141,7 @@ class ColorDisplayTools(HorizontalGroup):
 			# yield Button("Edit")
 		with HorizontalGroup():
 			# yield Button("<--")
-			# yield Button("A")
+			yield Button("A")
 			# yield Label("Index")
 			# yield Button("-->")
 
@@ -180,7 +180,7 @@ class ColorDisplayGroup(Vertical):
 	def compose(self):
 		yield ColorDisplay()
 		yield ColorCodeGroup()
-		yield ColorDisplayTools()
+		# yield ColorDisplayTools()
 
 	def on_mount(self):
 		self.ColorDisplay = self.query_one("ColorDisplay")
@@ -213,7 +213,8 @@ class ColorTools(HorizontalScroll):
 		
 	def action_add_color_display(self):
 		a = ColorDisplayGroup()
-		self.query_one("ColorTools").mount(a)
+		# self.query_one("Color").mount(a)
+		self.mount(a)
 		a.scroll_visible()
 
 
