@@ -2,7 +2,7 @@
 
 <img width="1084" height="160" alt="terminalquicktools-title" src="https://github.com/user-attachments/assets/0b82d2aa-2280-46e8-882d-71f12e1acaf6" />
 
-Quick Tools in Terminal provides various tools to help boost your productivity, especially while offline.
+Inspired by the lack of easily acessible offline tool apps, Quick Tools in Terminal seeks to provides various tools to help boost your productivity, especially while offline.
 
 ## Features
 ### Unit Conversions
@@ -31,3 +31,8 @@ Quick Tools in Terminal provides various tools to help boost your productivity, 
 - More unit conversions types
 - Currency
 - Timezones
+
+
+## Instructions
+1. Download release (should be named main.zip)
+2. Unzip folder and run quicktools.exe
